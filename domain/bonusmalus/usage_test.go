@@ -9,7 +9,7 @@ import (
 
 func TestUsageValid(t *testing.T) {
 	assert.True(t, bonusmalus.BonusMalusPrivateUsage.IsValid())
-	assert.True(t, bonusmalus.BonusMalusPublicUsage.IsValid())
+	assert.True(t, bonusmalus.BonusMalusProfessionnalUsage.IsValid())
 }
 
 func TestUsageInvalid(t *testing.T) {

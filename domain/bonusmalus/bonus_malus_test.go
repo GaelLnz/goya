@@ -19,8 +19,8 @@ func TestNewBonusMalusPrivate(t *testing.T) {
 	assert.NotNil(t, bonusmalus)
 }
 
-func TestNewBonusMalusPublic(t *testing.T) {
-	bonusmalus, err := bonusmalus.NewBonusMalus(0, 0, bonusmalus.BonusMalusPublicUsage)
+func TestNewBonusMalusProfessionnal(t *testing.T) {
+	bonusmalus, err := bonusmalus.NewBonusMalus(0, 0, bonusmalus.BonusMalusProfessionnalUsage)
 	assert.NoError(t, err)
 	assert.NotNil(t, bonusmalus)
 }
@@ -121,7 +121,7 @@ func TestScorePrivate(t *testing.T) {
 	assertScoreTable(t, testCases2Accident, 99 /* accident */, bonusmalus.BonusMalusPrivateUsage)
 }
 
-func TestScorePublic(t *testing.T) {
+func TestScoreProfessionnal(t *testing.T) {
 	testCases0Accident := []scoreTestCase{
 		{0, 14},
 		{1, 13},
@@ -204,11 +204,11 @@ func TestScorePublic(t *testing.T) {
 		{99, 3},
 	}
 
-	assertScoreTable(t, testCases0Accident, 0 /* accident */, bonusmalus.BonusMalusPublicUsage)
-	assertScoreTable(t, testCases1Accident, 1 /* accident */, bonusmalus.BonusMalusPublicUsage)
-	assertScoreTable(t, testCases2Accident, 2 /* accident */, bonusmalus.BonusMalusPublicUsage)
-	assertScoreTable(t, testCases2Accident, 3 /* accident */, bonusmalus.BonusMalusPublicUsage)
-	assertScoreTable(t, testCases2Accident, 99 /* accident */, bonusmalus.BonusMalusPublicUsage)
+	assertScoreTable(t, testCases0Accident, 0 /* accident */, bonusmalus.BonusMalusProfessionnalUsage)
+	assertScoreTable(t, testCases1Accident, 1 /* accident */, bonusmalus.BonusMalusProfessionnalUsage)
+	assertScoreTable(t, testCases2Accident, 2 /* accident */, bonusmalus.BonusMalusProfessionnalUsage)
+	assertScoreTable(t, testCases2Accident, 3 /* accident */, bonusmalus.BonusMalusProfessionnalUsage)
+	assertScoreTable(t, testCases2Accident, 99 /* accident */, bonusmalus.BonusMalusProfessionnalUsage)
 }
 
 func assertScoreTable(t *testing.T, scoreTests []scoreTestCase, accidents uint, usage bonusmalus.BonusMalusUsage) {
