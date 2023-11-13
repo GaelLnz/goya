@@ -13,6 +13,24 @@ type scoreTestCase struct {
 	expected     int
 }
 
+func TestNewBonusMalusPrivate(t *testing.T) {
+	bonusmalus, err := bonusmalus.NewBonusMalus(0, 0, bonusmalus.BonusMalusPrivateUsage)
+	assert.NoError(t, err)
+	assert.NotNil(t, bonusmalus)
+}
+
+func TestNewBonusMalusPublic(t *testing.T) {
+	bonusmalus, err := bonusmalus.NewBonusMalus(0, 0, bonusmalus.BonusMalusPublicUsage)
+	assert.NoError(t, err)
+	assert.NotNil(t, bonusmalus)
+}
+
+func TestNewBonusMalusInvalid(t *testing.T) {
+	bonusmalus, err := bonusmalus.NewBonusMalus(0, 0, "invalid")
+	assert.Error(t, err)
+	assert.Nil(t, bonusmalus)
+}
+
 func TestScorePrivate(t *testing.T) {
 	testCases0Accident := []scoreTestCase{
 		{0, 11},
@@ -196,8 +214,9 @@ func TestScorePublic(t *testing.T) {
 func assertScoreTable(t *testing.T, scoreTests []scoreTestCase, accidents uint, usage bonusmalus.BonusMalusUsage) {
 	for _, testCase := range scoreTests {
 		t.Run(fmt.Sprintf("%d driving years %d accidents", testCase.drivingYears, accidents), func(t *testing.T) {
-			bonusMalus := bonusmalus.NewBonusMalus(testCase.drivingYears, accidents, usage)
+			bonusMalus, err := bonusmalus.NewBonusMalus(testCase.drivingYears, accidents, usage)
 
+			assert.NoError(t, err)
 			assert.Equal(t, testCase.expected, bonusMalus.Score())
 		})
 	}

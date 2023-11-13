@@ -1,10 +1,7 @@
 package bonusmalus
 
-type BonusMalusUsage string
-
-var (
-	BonusMalusPrivateUsage BonusMalusUsage = "PRIVATE"
-	BonusMalusPublicUsage  BonusMalusUsage = "PUBLIC"
+import (
+	"fmt"
 )
 
 type bonusMalus struct {
@@ -13,12 +10,16 @@ type bonusMalus struct {
 	usage        BonusMalusUsage
 }
 
-func NewBonusMalus(drivingYears, accidents uint, usage BonusMalusUsage) bonusMalus {
-	return bonusMalus{
+func NewBonusMalus(drivingYears, accidents uint, usage BonusMalusUsage) (*bonusMalus, error) {
+	if !usage.IsValid() {
+		return nil, fmt.Errorf("%s is not a valid usage", usage)
+	}
+
+	return &bonusMalus{
 		drivingYears: normalizeDrivingYears(drivingYears),
 		accidents:    normalizeAccidents(accidents),
-		usage:        usage, // TODO: check usage is valid value for enum
-	}
+		usage:        usage,
+	}, nil
 }
 
 func (b bonusMalus) Score() int {
