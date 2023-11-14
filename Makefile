@@ -3,7 +3,7 @@ APP_NAME=goya
 .PHONY: test lint build run
 
 test:
-	go test ./...
+	docker build . -f ./test.Dockerfile
 
 lint:
 	golangci-lint run

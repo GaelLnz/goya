@@ -46,6 +46,6 @@ func TestBonusMalusScoreInvalidUsage(t *testing.T) {
 	testutils.WithTestResolver(func(resolver *graphql.Resolver) {
 		score, err := resolver.Query().BonusMalusScore(context.Background(), 0, 0, "invalid")
 		assert.Error(t, err)
-		assert.Equal(t, 0, score)
+		assert.Equal(t, -1, score)
 	})
 }

@@ -1,8 +1,12 @@
 FROM golang:1.21-bookworm AS builder
 
 WORKDIR /app
-COPY . .
+
+# optimize rebuilds
+COPY go.mod go.sum ./
 RUN go mod download
+
+COPY . .
 RUN go build -o goya cmd/server/main.go
 
 FROM golang:1.21-bookworm AS runtime
