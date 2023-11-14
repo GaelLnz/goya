@@ -13,6 +13,9 @@ The project has the following structure:
 * `domain/` => contains the business logic
 * `api/graphql/` => contains the graphql api
 * `cmd/server/` => contains the entry point of this application
+* `Dockerfile` => a multi-stage build dockerfile used to build & run the application
+* `test.Dockerfile` => a dockerfile used to run tests
+* `Makefile` => a makefile to simplify developpement
 
 ### Domain Driven Design
 
@@ -21,6 +24,10 @@ I chose to use the DDD pattern as it focuses on creating a shared understanding 
 ### GraphQL
 
 GraphQL provides a powerful and flexible query language for fetching data. It has many advantages but it is definitly overkill for such small usecase. The only real reason to implement a GraphQL API here is pure fun.
+
+#### gqlgen
+
+A simple & powerful library for building GraphQL servers. More at [https://gqlgen.com/](https://gqlgen.com/).
 
 ## Try it yourself
 
@@ -55,3 +62,16 @@ There is only one query available, `bonusMalusScore` which returns the bonus-mal
 You can test the application using:
 
 > `make test`
+
+### Lint
+
+You can lint the code using:
+
+> `make lint`
+
+## Possible enhancements
+
+- [ ] Improve this README
+- [ ] Run tests in CI as a github action
+- [ ] Add pre-commit hooks to run tests & lint locally before commiting
+- [ ] Convert `bonusMalusScore` query parameters to uint
