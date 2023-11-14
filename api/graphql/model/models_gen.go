@@ -12,17 +12,17 @@ type BonusMalusUsage string
 
 const (
 	BonusMalusUsagePrivate      BonusMalusUsage = "PRIVATE"
-	BonusMalusUsageProfessional BonusMalusUsage = "PROFESSIONAL"
+	BonusMalusUsageProfesionnal BonusMalusUsage = "PROFESIONNAL"
 )
 
 var AllBonusMalusUsage = []BonusMalusUsage{
 	BonusMalusUsagePrivate,
-	BonusMalusUsageProfessional,
+	BonusMalusUsageProfesionnal,
 }
 
 func (e BonusMalusUsage) IsValid() bool {
 	switch e {
-	case BonusMalusUsagePrivate, BonusMalusUsageProfessional:
+	case BonusMalusUsagePrivate, BonusMalusUsageProfesionnal:
 		return true
 	}
 	return false

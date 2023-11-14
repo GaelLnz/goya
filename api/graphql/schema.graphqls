@@ -2,7 +2,7 @@
 
 enum BonusMalusUsage{
   PRIVATE
-  PROFESSIONAL
+  PROFESIONNAL
 }
 
 type Query {

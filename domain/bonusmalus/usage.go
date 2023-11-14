@@ -4,7 +4,7 @@ type BonusMalusUsage string
 
 var (
 	BonusMalusPrivateUsage       BonusMalusUsage = "PRIVATE"
-	BonusMalusProfessionnalUsage BonusMalusUsage = "PRO"
+	BonusMalusProfessionnalUsage BonusMalusUsage = "PROFESIONNAL"
 )
 
 func (b BonusMalusUsage) IsValid() bool {

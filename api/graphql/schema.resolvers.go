@@ -6,14 +6,31 @@ package graphql
 
 import (
 	"context"
+	"errors"
 
 	"github.com/GaelLnz/goya/api/graphql/model"
+	"github.com/GaelLnz/goya/domain/bonusmalus"
 )
 
-// Would've been great to use uint here, but for some reason gqlgen seems to do a poor job at handling them. Negative numbers passed to uint do NOT result in an API error. I have no time to investigate further. More here https://gqlgen.com/reference/scalars/
 func (r *queryResolver) BonusMalusScore(ctx context.Context, drivingYears int, accidents int, usage model.BonusMalusUsage) (int, error) {
+	r.logger.Printf("querying bonus-malus for %d driving years, %d accidents and %s usage", drivingYears, accidents, usage.String())
 
-	return 0, nil
+	// Would've been great to use uint as parameters here, but for some reason gqlgen seems to do a poor job at handling them.
+	// Negative numbers passed to uint parameters do NOT result in an API error and are badly casted. I have no time to investigate further. More here https://gqlgen.com/reference/scalars/
+	if drivingYears < 0 {
+		return 0, errors.New("driving years must be a positive integer")
+	}
+
+	if accidents < 0 {
+		return 0, errors.New("accidents must be a positive integer")
+	}
+
+	bonusMalus, err := bonusmalus.NewBonusMalus(uint(drivingYears), uint(accidents), bonusmalus.BonusMalusUsage(usage))
+	if err != nil {
+		return 0, err
+	}
+
+	return bonusMalus.Score(), nil
 }
 
 // Query returns QueryResolver implementation.
