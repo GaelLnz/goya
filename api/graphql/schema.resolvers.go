@@ -12,6 +12,7 @@ import (
 	"github.com/GaelLnz/goya/domain/bonusmalus"
 )
 
+// BonusMalusScore is the resolver for the bonusMalusScore field.
 func (r *queryResolver) BonusMalusScore(ctx context.Context, drivingYears int, accidents int, usage model.BonusMalusUsage) (int, error) {
 	r.logger.Printf("querying bonus-malus for %d driving years, %d accidents and %s usage", drivingYears, accidents, usage.String())
 

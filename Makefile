@@ -1,4 +1,5 @@
 APP_NAME=goya
+PORT=8080
 
 .PHONY: test lint build run
 
@@ -12,7 +13,7 @@ build:
 	docker build -t ${APP_NAME} .
 
 run: build
-	docker run -p 8080:8080 -t ${APP_NAME}
+	docker run -p ${PORT}:${PORT} -t ${APP_NAME}
 
 generate:
 	go generate ./...
