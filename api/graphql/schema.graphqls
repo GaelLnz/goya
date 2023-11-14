@@ -1,5 +1,3 @@
-
-
 enum BonusMalusUsage{
   PRIVATE
   PROFESIONNAL
@@ -9,4 +7,3 @@ type Query {
   "Compute the Belgium BonusMalus score as a value between -2 (best) and 22 (worst)"
   bonusMalusScore(drivingYears: Int!, accidents: Int!, usage: BonusMalusUsage!): Int!
 }
-
