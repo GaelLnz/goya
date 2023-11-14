@@ -1,6 +1,6 @@
 # Technical test for Goya
 
-## Overview
+## Overview
 
 The goal of this challenge is to create an API that can be used to compute the Belgium driver's bonus-malus score.
 This score depends on the number of driving years, the number of accidents and the driving usage. The score is in the range -2 (best) to 22 (worst).
@@ -18,7 +18,7 @@ The project has the following structure:
 
 I chose to use the DDD pattern as it focuses on creating a shared understanding of the problem domain between technical and non-technical team members. This approach also facilitates the modularity and readability of the code.
 
-### GraphQL
+### GraphQL
 
 GraphQL provides a powerful and flexible query language for fetching data. It has many advantages but it is definitly overkill for such small usecase. The only real reason to implement a GraphQL API here is pure fun.
 
