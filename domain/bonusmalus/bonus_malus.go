@@ -4,25 +4,25 @@ import (
 	"fmt"
 )
 
-type bonusMalus struct {
+type BonusMalus struct {
 	drivingYears uint
 	accidents    uint
 	usage        BonusMalusUsage
 }
 
-func NewBonusMalus(drivingYears, accidents uint, usage BonusMalusUsage) (*bonusMalus, error) {
+func NewBonusMalus(drivingYears, accidents uint, usage BonusMalusUsage) (*BonusMalus, error) {
 	if !usage.IsValid() {
 		return nil, fmt.Errorf("%s is not a valid usage", usage)
 	}
 
-	return &bonusMalus{
+	return &BonusMalus{
 		drivingYears: normalizeDrivingYears(drivingYears),
 		accidents:    normalizeAccidents(accidents),
 		usage:        usage,
 	}, nil
 }
 
-func (b bonusMalus) Score() int {
+func (b BonusMalus) Score() int {
 	const accidentPenalty int = 5
 
 	score := b.initialScore() - int(b.drivingYears) + int(b.accidents)*accidentPenalty
@@ -30,7 +30,7 @@ func (b bonusMalus) Score() int {
 	return b.normalizeScore(score)
 }
 
-func (b bonusMalus) initialScore() int {
+func (b BonusMalus) initialScore() int {
 	if b.usage == BonusMalusPrivateUsage {
 		return 11
 	}
@@ -38,7 +38,7 @@ func (b bonusMalus) initialScore() int {
 	return 14
 }
 
-func (b bonusMalus) normalizeScore(score int) int {
+func (b BonusMalus) normalizeScore(score int) int {
 	const maxScore int = 22
 	if score > maxScore {
 		return maxScore
@@ -51,7 +51,7 @@ func (b bonusMalus) normalizeScore(score int) int {
 
 	return score
 }
-func (b bonusMalus) minScore() int {
+func (b BonusMalus) minScore() int {
 	if b.accidents < 2 {
 		return -2
 	}
