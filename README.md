@@ -29,19 +29,23 @@ GraphQL provides a powerful and flexible query language for fetching data. It ha
 
 A simple & powerful library for building GraphQL servers. More at [https://gqlgen.com/](https://gqlgen.com/).
 
+To update the GraphQL schema, you will need to modify the `api/graphql/schema.graphqls` file. It is then necessary to re-generate code associated to this schema using:
+
+> `make generate`
+
 ## Try it yourself
 
 ### Dependencies
 
-#### Test or Run
+#### Run
 
-To test or run, you will need to install on your machine:
+To run the application, you will need to install on your machine:
 - `docker`
 - `make`
 
-#### Lint
+#### Test & lint
 
-To lint, you will need to install on your machine:
+To test and lint, you will need to install on your machine:
 - `go >= 1.21`
 - `golangci-lint`
 
@@ -73,5 +77,4 @@ You can lint the code using:
 
 - [ ] Improve this README
 - [ ] Run tests in CI as a github action
-- [ ] Add pre-commit hooks to run tests & lint locally before commiting
 - [ ] Convert `bonusMalusScore` query parameters to uint

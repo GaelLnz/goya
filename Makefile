@@ -3,8 +3,11 @@ PORT=8080
 
 .PHONY: test lint build run
 
-test:
-	docker build . -f ./test.Dockerfile
+download:
+	go mod download
+
+test: download
+	go test ./...
 
 lint:
 	golangci-lint run
