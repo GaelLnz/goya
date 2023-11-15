@@ -22,7 +22,7 @@ I chose to use the DDD pattern as it focuses on creating a shared understanding 
 
 ### GraphQL
 
-GraphQL provides a powerful and flexible query language for fetching data. It has many advantages but it is definitly overkill for such small usecase. The only real reason to implement a GraphQL API here is pure fun.
+GraphQL provides a powerful and flexible query language for fetching data. It has many advantages but it is definitely overkill for such small usecase. The only real reason to implement a GraphQL API here is pure fun.
 
 #### gqlgen
 
