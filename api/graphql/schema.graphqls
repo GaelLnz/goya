@@ -1,0 +1,16 @@
+enum BonusMalusUsage{
+  PRIVATE
+  PROFESIONNAL
+}
+
+type Query {
+  "Compute the Belgium BonusMalus score as a value between -2 (best) and 22 (worst)"
+  bonusMalusScore(
+    "The number of driving years. Must be a positive integer"
+    drivingYears: Int!, 
+    "The number of accidents in the past 5 years. Must be a positive integer"
+    accidents: Int!, 
+    "The type of usage"
+    usage: BonusMalusUsage!
+  ):Int!
+}
