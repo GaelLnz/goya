@@ -14,7 +14,6 @@ The project has the following structure:
 * `api/graphql/` => contains the graphql api
 * `cmd/server/` => contains the entry point of this application
 * `Dockerfile` => a multi-stage build dockerfile used to build & run the application
-* `test.Dockerfile` => a dockerfile used to run tests
 * `Makefile` => a makefile to simplify developpement
 
 ### Domain Driven Design
