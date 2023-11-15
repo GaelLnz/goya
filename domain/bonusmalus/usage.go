@@ -11,7 +11,6 @@ func (b BonusMalusUsage) IsValid() bool {
 	switch b {
 	case BonusMalusPrivateUsage, BonusMalusProfessionnalUsage:
 		return true
-
 	}
 
 	return false
